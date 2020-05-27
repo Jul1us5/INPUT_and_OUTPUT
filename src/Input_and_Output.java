@@ -103,6 +103,5 @@ public class Input_and_Output {
                 writer.write(str + System.lineSeparator());
             }
         }
-
     }
 }
