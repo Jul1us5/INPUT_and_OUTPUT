@@ -1,1 +1,1 @@
-Labas Pasauli! Mokomes suprasti kaip naudotis JAVA inputais ir outputais
+Labas Pasauli ! Mokomes streamint inputus ir outputus 
