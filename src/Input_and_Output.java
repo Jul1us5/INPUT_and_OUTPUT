@@ -97,12 +97,12 @@ public class Input_and_Output {
             }
         });
 
-            // Push ArrayList to trecias.txt | output stream
-        FileWriter writer = new FileWriter("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/trecias.txt");
-        for (Object str : list) {
-            writer.write(str + System.lineSeparator());
+        // Push ArrayList to trecias.txt | output stream
+        try (FileWriter writer = new FileWriter("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/trecias.txt");) {
+            for (Object str : list) {
+                writer.write(str + System.lineSeparator());
+            }
         }
-        writer.close();
 
     }
 }
