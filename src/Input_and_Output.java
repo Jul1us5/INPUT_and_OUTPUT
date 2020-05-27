@@ -13,6 +13,10 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -56,7 +60,7 @@ public class Input_and_Output {
             }
 
         }
-            // Create ArrayList
+        // Create ArrayList
         ArrayList list = new ArrayList();
 
         try (BufferedReader r = new BufferedReader(new FileReader("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/pirmas.txt"))) {
@@ -75,12 +79,23 @@ public class Input_and_Output {
                 list.add(sb.toString());
             }
         }
-//        System.out.println(list);
-//        System.out.println(list.get(9));
 
         System.out.println("-----");
         System.out.println("Copying: complete");
 
-    }
+        Collections.sort(list, new Comparator<String>() {
 
+            @Override
+            public int compare(String o1, String o2) {
+                if (o1.length() < o2.length()) {
+                    return 1;
+                } else {
+                    return o2.compareTo(o1);
+                }
+            }
+        });
+
+        System.out.println(list);
+
+    }
 }
