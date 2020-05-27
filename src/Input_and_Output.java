@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,30 +29,21 @@ public class Input_and_Output {
 
             // Read a file
             System.out.print("Read: ");
-            ArrayList list = new ArrayList();
             int x = 0;
-            
+
             String s = null;
             while ((s = br.readLine()) != null) {
-                if(s == "a") {
-                    break;
-                }
-                
+
                 System.out.print(s);
-                list.add(s);
+                System.out.println();
             }
-            
-
-            System.out.println();
-
-            System.out.println();
-            System.out.println(list);
-            System.out.println();
         }
 
         // In and Out files
         try (InputStream in = new FileInputStream("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/pirmas.txt");
-                OutputStream out = new FileOutputStream("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/antras.txt")) {
+                OutputStream out = new FileOutputStream("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/antras.txt");
+                Writer w = new OutputStreamWriter(out, "UTF-8");
+                BufferedWriter bw = new BufferedWriter(w);) {
 
             // Copy from pirmas.txt to antras.txt
             int length;
@@ -60,8 +52,31 @@ public class Input_and_Output {
             while ((length = in.read(bytes)) != -1) {
 
                 out.write(bytes, 0, length);
+
+            }
+
+        }
+            // Create ArrayList
+        ArrayList list = new ArrayList();
+
+        try (BufferedReader r = new BufferedReader(new FileReader("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/pirmas.txt"))) {
+            StringBuffer sb = new StringBuffer();
+            while (r.ready()) {
+                char c = (char) r.read();
+                if (c == ' ') {
+                    list.add(sb.toString());
+                    sb = new StringBuffer();
+                } else {
+                    sb.append(c);
+                }
+            }
+            // Put single words to ArrayList
+            if (sb.length() > 0) {
+                list.add(sb.toString());
             }
         }
+//        System.out.println(list);
+//        System.out.println(list.get(9));
 
         System.out.println("-----");
         System.out.println("Copying: complete");
