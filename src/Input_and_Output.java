@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -83,6 +84,7 @@ public class Input_and_Output {
         System.out.println("-----");
         System.out.println("Copying: complete");
 
+        // Sort index by length in ArrayList
         Collections.sort(list, new Comparator<String>() {
 
             @Override
@@ -95,7 +97,12 @@ public class Input_and_Output {
             }
         });
 
-        System.out.println(list);
+            // Push ArrayList to trecias.txt | output stream
+        FileWriter writer = new FileWriter("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/trecias.txt");
+        for (Object str : list) {
+            writer.write(str + System.lineSeparator());
+        }
+        writer.close();
 
     }
 }
