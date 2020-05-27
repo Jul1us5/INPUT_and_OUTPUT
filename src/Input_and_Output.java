@@ -33,7 +33,7 @@ public class Input_and_Output {
                 BufferedReader br = new BufferedReader(r);) {
 
             // Read a file
-            System.out.print("Read: ");
+            System.out.print("* Read: ");
             int x = 0;
 
             String s = null;
@@ -81,8 +81,8 @@ public class Input_and_Output {
             }
         }
 
-        System.out.println("-----");
-        System.out.println("Copying: complete");
+        System.out.println("------");
+        System.out.println("* Copying: complete copying to next .txt file");
 
         // Sort index by length in ArrayList
         Collections.sort(list, new Comparator<String>() {
@@ -103,5 +103,24 @@ public class Input_and_Output {
                 writer.write(str + System.lineSeparator());
             }
         }
+        
+        try (FileInputStream file_in = new FileInputStream("/Users/evuncik/Desktop/JAVA/INPUT_and_OUTPUT/src/trecias.txt");
+                Reader r = new InputStreamReader(file_in, "UTF-8");
+                BufferedReader br = new BufferedReader(r);) {
+
+            // Sorted .txt files input stream
+            System.out.println("------");
+            System.out.println("* Sorted: ( and copying to next .txt file )");
+            System.out.println();
+            int x = 0;
+
+            String s = null;
+            while ((s = br.readLine()) != null) {
+
+                System.out.print(s);
+                System.out.println();
+            }
+        }
+        
     }
 }
